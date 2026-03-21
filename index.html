@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw养虾入门</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+  :root {
+    --r-background-color: #0a0e1a;
+    --r-main-color: #e6edf3;
+    --r-heading-color: #58a6ff;
+    --r-link-color: #58a6ff;
+  }
+  .reveal { font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif; }
+  .reveal h1, .reveal h2, .reveal h3 { font-weight: 700; text-transform: none; }
+  .reveal h1 { font-size: 2.4em; }
+  .reveal h2 { font-size: 1.7em; }
+  .reveal h3 { font-size: 1.15em; color: #8b949e; }
+  .reveal ul { text-align: left; }
+  .reveal li { margin-bottom: 0.5em; font-size: 0.82em; line-height: 1.5; }
+  .reveal p { line-height: 1.6; }
+  .small { font-size: 0.65em; color: #8b949e; }
+
+  /* Card */
+  .card { background: linear-gradient(135deg, #161b22, #1c2333); border: 1px solid #30363d; border-radius: 16px; padding: 28px 32px; margin: 12px 0; text-align: left; }
+  .card-glow { box-shadow: 0 0 30px rgba(88,166,255,0.08); }
+
+  /* Layouts */
+  .two-col { display: flex; gap: 36px; align-items: flex-start; }
+  .two-col > div { flex: 1; text-align: left; }
+  .three-col { display: flex; gap: 24px; }
+  .three-col > div { flex: 1; text-align: left; }
+
+  /* Colors */
+  .accent { color: #f0883e; font-weight: 600; }
+  .green { color: #3fb950; }
+  .red { color: #f85149; }
+  .blue { color: #58a6ff; }
+  .purple { color: #bc8cff; }
+  .yellow { color: #d29922; }
+  .pink { color: #f778ba; }
+
+  /* Tags */
+  .tag { display: inline-block; border-radius: 20px; padding: 3px 14px; font-size: 0.72em; margin: 3px; font-weight: 500; }
+  .tag-blue { background: #1f6feb33; color: #58a6ff; }
+  .tag-green { background: #238636aa; color: #3fb950; }
+  .tag-red { background: #da363633; color: #f85149; }
+  .tag-orange { background: #9e6a0333; color: #f0883e; }
+  .tag-purple { background: #8957e533; color: #bc8cff; }
+
+  /* Images */
+  .slide-img { max-height: 420px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); border: 1px solid #30363d; cursor: zoom-in; transition: transform 0.2s, box-shadow 0.2s; }
+  .slide-img:hover { transform: scale(1.03); box-shadow: 0 0 24px rgba(88,166,255,0.2); }
+  .slide-img-large { max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); cursor: zoom-in; }
+  .slide-img-full { max-height: 580px; border-radius: 8px; cursor: zoom-in; }
+  .photo-row { display: flex; gap: 12px; justify-content: center; align-items: center; }
+  .photo-row img { border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); cursor: zoom-in; }
+
+  /* Tables */
+  .reveal table { border-collapse: collapse; font-size: 0.7em; width: 100%; }
+  .reveal table th { background: #1f6feb44; color: #58a6ff; padding: 10px 14px; border: 1px solid #30363d; font-weight: 600; }
+  .reveal table td { padding: 8px 14px; border: 1px solid #30363d; vertical-align: top; }
+  .reveal table tr:nth-child(even) { background: #161b2288; }
+  .vs-winner { background: #238636aa; border-radius: 4px; padding: 1px 6px; }
+
+  /* Code */
+  .code-block { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px 20px; text-align: left; font-family: "SF Mono", "Fira Code", monospace; font-size: 0.72em; line-height: 1.6; color: #e6edf3; }
+  .code-block .comment { color: #8b949e; }
+  .code-block .cmd { color: #3fb950; }
+  .code-block .flag { color: #f0883e; }
+
+  /* Warning */
+  .warning-box { background: linear-gradient(135deg, #3d1a1a, #2d1515); border: 1px solid #f8514966; border-left: 4px solid #f85149; border-radius: 10px; padding: 16px 20px; text-align: left; font-size: 0.82em; }
+
+  /* Checklist */
+  .checklist { text-align: left; font-size: 0.78em; }
+  .checklist li { list-style: none; margin-bottom: 8px; }
+  .checklist li::before { content: '☐ '; color: #f0883e; font-weight: bold; }
+  .checklist li.critical::before { content: '🔴 '; }
+
+  /* Flow */
+  .flow-box { display: inline-block; padding: 8px 18px; border-radius: 10px; font-size: 0.75em; font-weight: 600; margin: 4px; }
+  .flow-arrow { display: inline-block; font-size: 1.2em; margin: 0 6px; color: #8b949e; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 40px; text-align: left; }
+  .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #f0883e, #58a6ff, #3fb950, #bc8cff, #f85149); border-radius: 3px; }
+  .timeline-item { position: relative; margin-bottom: 16px; font-size: 0.78em; }
+  .timeline-item::before { content: ''; position: absolute; left: -34px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #58a6ff; border: 2px solid #0a0e1a; }
+
+  /* Section divider */
+  .section-num { display: inline-block; background: #1f6feb; color: white; width: 36px; height: 36px; line-height: 36px; border-radius: 50%; text-align: center; font-weight: 700; font-size: 0.9em; margin-right: 8px; }
+  .gradient-text { background: linear-gradient(90deg, #f0883e, #f85149, #bc8cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* Lightbox */
+  .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.92); z-index: 9999; justify-content: center; align-items: center; cursor: zoom-out; }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 8px; box-shadow: 0 0 60px rgba(88,166,255,0.15); cursor: default; }
+  .lightbox-counter { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); color: #8b949e; font-size: 14px; z-index: 10000; background: rgba(0,0,0,0.6); padding: 4px 16px; border-radius: 12px; }
+  .lightbox-btn { position: fixed; top: 50%; transform: translateY(-50%); z-index: 10000; background: rgba(255,255,255,0.1); border: none; color: white; font-size: 2.2em; width: 56px; height: 56px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+  .lightbox-btn:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+  .lightbox-close { position: fixed; top: 16px; right: 20px; z-index: 10000; background: rgba(255,255,255,0.1); border: none; color: white; font-size: 1.6em; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+  .lightbox-close:hover { background: rgba(248,81,73,0.4); }
+  .key-hint { position: fixed; bottom: 12px; left: 12px; font-size: 11px; color: #484f5866; z-index: 100; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- 封面页 -->
+<section>
+  <h1 class="gradient-text">OpenClaw养虾入门</h1>
+  <p style="color:#8b949e; margin-bottom: 30px;">懂虾，才能养好虾</p>
+  <img src="ppt-assets/cover-lobster-whiteboard.png" class="slide-img-large" alt="Cover Lobster" style="border-radius: 20px;">
+  
+  <aside class="notes">
+    大家好！欢迎来到今天的分享。我是你们的数字助理小曦。
+    
+    今天我们要聊一个非常有趣的话题——《OpenClaw养虾入门》。
+    大家屏幕上看到的这只水彩风格的可爱小龙虾，就是我们今天的主角。
+    
+    很多人一听到 AI Agent、智能体这些词，可能会觉得门槛很高、技术很硬核。
+    但今天，我想换个轻松的说法：其实这就好比我们在数字世界里“养了一只电子宠物”。
+    它不仅可爱，还能帮你写代码、查资料、做 PPT，甚至帮你回复消息。
+    
+    接下来，我会手把手带大家了解，如何从零开始，孵化、调教并养大这样一只聪明能干的数字龙虾。
+    准备好了吗？我们开始吧！
+  </aside>
+</section>
+
+<!-- 第2页：提出问题 -->
+<section>
+  <h2>🤔 我们为什么要了解<span class="gradient-text">OpenClaw</span>？</h2>
+  
+  <aside class="notes">
+    刚才我们看到了一只可爱的数字龙虾。但在它萌萌的外表下，其实隐藏着一场正在发生的工作方式变革。
+    
+    那回到今天这个最根本的问题：我们为什么要花时间去了解 OpenClaw 呢？
+    
+    现在市面上有太多的大模型，比如 ChatGPT、Claude 或者是咱们国内的 Kimi、通义千问。它们确实非常聪明，能帮你写文章、出点子。但大家日常用的时候，有没有一种感觉？它们更像是一个被锁在聊天框里的“大脑”，没有手脚。你得亲自把文件喂给它，然后再把它的结果复制出来，自己去执行。它并不能真正替你“做事”。
+    
+    而 OpenClaw 完全不同。它不仅接入了最聪明的大脑，还长出了能在数字世界自由行动的“手和脚”。它能直接帮你读取电脑里的各种文档，替你敲代码、跑程序，甚至能自动帮你发企业微信、写飞书汇报、查日历安排会议。
+    
+    了解 OpenClaw，不是为了去学一个多么硬核的新技术框架，而是为了给自己雇佣一个真正能“动手干活”的数字助理、一个全能的实习生。
+    
+    这就好比，以前你是在用一台高级的打字机，现在你是在直接给助理派发任务。这其中的效率差异是跨时代的。接下来的内容，我就会详细讲讲，这只“虾”到底能帮你省下多少时间。
+  </aside>
+</section>
+
+<!-- 第3页：历史对比 -->
+<section>
+  <h2>第一个故事</h2>
+  <div class="two-col" style="margin-top: 40px; text-align: center;">
+    <div>
+      <img src="ppt-assets/watt_steam_engine.jpg" class="slide-img" alt="瓦特蒸汽机" style="height: 380px; object-fit: cover;">
+      <h3 style="margin-top: 15px; font-size: 0.95em; white-space: nowrap; color: #e6edf3;">瓦特的蒸汽机 (1776)</h3>
+      <p style="color: #8b949e; font-size: 0.8em;">第一次工业革命的起点</p>
+    </div>
+    <div>
+      <img src="ppt-assets/nemesis_ship.jpg" class="slide-img" alt="复仇女神号" style="height: 380px; object-fit: cover;">
+      <h3 style="margin-top: 15px; font-size: 0.95em; white-space: nowrap; color: #f85149;">复仇女神号蒸汽铁甲舰 (1839)</h3>
+      <p style="color: #8b949e; font-size: 0.8em;">中国沦为半殖民地半封建社会</p>
+    </div>
+  </div>
+  
+  <aside class="notes">
+    为了解释明白 OpenClaw 到底带来了什么改变，我们先来看两张历史照片。
+    
+    左边这台，是1776年瓦特改良的蒸汽机。它的出现标志着人类掌握了全新的通用动力，这是大脑级别的革命。它就像今天的大语言模型一样，充满着无限的潜力，但在当时，它只是一个固定在工厂里的巨大铁疙瘩。
+    
+    右边这艘船，是仅仅60多年后，英国在鸦片战争中开到大清帝国门口的“复仇女神号”。它是历史上第一艘远洋航行的全铁壳蒸汽明轮战舰。它把蒸汽机这个“通用大脑”，装上了螺旋桨和装甲，变成了能在浅水区自由移动、无视风向逆水行舟的怪物。
+    
+    对于当时还在用木帆船和弓箭的清朝水师来说，这完全是降维打击。
+    
+    今天，大语言模型就像是当年的蒸汽机，而 OpenClaw，就是那艘把蒸汽机装进船体、配上火炮的“复仇女神号”。大模型提供了智力，而 OpenClaw 为这份智力提供了可以触碰现实文件、执行实际代码的“船体和手脚”。
+    
+    如果你只拥有一个网页版的 ChatGPT，你拥有的只是一台孤立的蒸汽机。而掌握了 Agent 技术，你才真正拥有了能驶向任何场景的战舰。
+  </aside>
+</section>
+
+<!-- 第4页：第二个故事 -->
+<section>
+  <h2>第二个故事</h2>
+  <div class="two-col" style="margin-top: 15px; text-align: center;">
+    <div>
+      <img src="ppt-assets/eniac.jpg" class="slide-img" alt="世界上第一台计算机" style="height: 330px; object-fit: cover;">
+      <h3 style="margin-top: 10px; font-size: 0.95em; white-space: nowrap; color: #e6edf3;">世界上第一台计算机 (1946年)</h3>
+      <p style="color: #8b949e; font-size: 0.8em; margin-bottom: 5px;">170m²，30吨，150千瓦，5000次/秒</p>
+      <p style="color: #8b949e; font-size: 0.75em; font-style: italic;">"全世界最多只需要5台计算机"</p>
+    </div>
+    <div>
+      <img src="ppt-assets/thinkpad.jpg" class="slide-img" alt="现代笔记本电脑" style="height: 330px; object-fit: cover;">
+      <h3 style="margin-top: 10px; font-size: 0.95em; white-space: nowrap; color: #f85149;">我们身边的计算机 (2026年)</h3>
+      <p style="color: #8b949e; font-size: 0.8em;">0.06m²，1.09千克，28瓦，40万亿次/秒</p>
+    </div>
+  </div>
+  
+  <aside class="notes">
+    大家再看屏幕上的第二个故事。
+    
+    左边是世界上第一台通用电子计算机 ENIAC，诞生于 1946 年。它最初是用来计算火炮弹道的，重达 30 吨，占地一百多平方米，不仅造价高昂，还需要好几位专家去手动插拔线缆才能操作。
+    当时 IBM 的总裁托马斯·沃森曾有过一句著名的论断，他说：“我认为世界上可能只需要 5 台计算机就够了。”在这个历史视角下，由于设备如此庞大昂贵，大家觉得普通人根本用不上。
+    
+    但是，再看右边这张图，这是我们今天桌面上每个人都有的 ThinkPad 笔记本电脑。今天它的算力比当年强大了无数个数量级，并且彻底融入了每个人的生活和工作。
+    
+    这说明了什么？任何革命性的技术，从“集中式的巨型设备”，演进到“分布式的个人工具”，是历史的必然。
+    
+    今天，像大语言模型，就像是当年的 ENIAC。它们在远端的机房里，我们通过网页浏览器去跟它对话。
+    而 Agent 技术，就是把大模型“个人电脑化”的推手。有了 Agent 框架（比如 OpenClaw），它就把云端的智力拉到了你的桌面，它懂你的文件、了解你的账号、结合你的工作流，真正变成了一只只为你服务、能在你的电脑里“敲键盘、发消息”的数字萌宠。
+  </aside>
+</section>
+
+<!-- 第5页：第三个故事 -->
+<section>
+  <h2>第三个故事</h2>
+  <div class="two-col" style="margin-top: 15px; text-align: center;">
+    <div>
+      <img src="ppt-assets/mitsubishi-m320.png" class="slide-img" alt="三菱M320" style="height: 330px; object-fit: contain;">
+      <h3 style="margin-top: 10px; font-size: 0.95em; white-space: nowrap; color: #e6edf3;">三菱M320</h3>
+      <p style="color: #8b949e; font-size: 0.8em; margin-bottom: 5px;">128 x 141，4096真彩色，255条联系人，3和弦</p>
+    </div>
+    <div>
+      <img src="ppt-assets/iphone-1.jpg" class="slide-img" alt="第一代iPhone" style="height: 330px; object-fit: contain;">
+      <h3 style="margin-top: 10px; font-size: 0.95em; white-space: nowrap; color: #f85149;">第一代iPhone</h3>
+      <p style="color: #8b949e; font-size: 0.8em; margin-bottom: 5px;">没有键盘</p>
+      <p style="color: #8b949e; font-size: 0.75em; font-style: italic;">"谁会需要这么贵的玩具"</p>
+    </div>
+  </div>
+  
+  <aside class="notes">
+    这是我们要讲的第三个，也是最后一个故事：交互方式的革命。
+    
+    左边是当年的功能机代表——三菱 M320。它有一块128x141像素的4096色屏幕，可以存255个联系人，还支持3和弦铃声。为了操作它，机身上挤满了各种物理按键，每一次交互都是刻板的指令输入。
+    
+    右边是第一代 iPhone。它颠覆了过去所有的认知，最重要的特点就是：没有键盘。在它刚发布时，很多传统手机巨头并不看好，甚至有这样的嘲讽：“谁会需要这么贵的玩具？”
+    
+    但历史证明，抛弃了固定的物理按键，引入直觉式的“多点触控”，开启了移动互联网的黄金时代。
+    
+    这和我们今天的 Agent 有什么关系？
+    今天，各种繁杂的软件界面、菜单栏、APP，就像是旧手机上密密麻麻的物理按键。而 Agent 就是那个“没有键盘的 iPhone”。
+    你不再需要去学习各种软件的使用说明，不再需要去点那些固定的按钮。你只需要一句话（意图），Agent 这个数字助理就会自然地理解你，替你去触达那些背后的服务。这不仅仅是算力的下放，更是人机交互的终极进化。
+    
+    这三个故事是想说明：在一个突破性技术刚出来的时候，往往显得不是很成熟，但是它的发展常常是难以预料的，并且会带动人类设备单向前进，再也不会掉头。
+    大模型可能是，OpenClaw 也可能是这样的技术，也许我们已经处在第四次工业革命中，很有可能也是地球上最后一次。
+  </aside>
+</section>
+
+</div>
+</div>
+
+<div class="key-hint">← → 翻页 · S 演讲者视图 · F 全屏 · O 总览 · 点击图片放大</div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lb-close">✕</button>
+  <button class="lightbox-btn lightbox-prev" id="lb-prev">‹</button>
+  <button class="lightbox-btn lightbox-next" id="lb-next">›</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  showSlideNumber: 'all',
+  transition: 'slide',
+  transitionSpeed: 'default',
+  backgroundTransition: 'fade',
+  width: 1280,
+  height: 720,
+  margin: 0.06,
+  center: true,
+  plugins: [RevealHighlight, RevealNotes]
+});
+
+// Lightbox
+(function() {
+  const overlay = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  let allImages = [], currentIdx = 0;
+
+  function collectImages() {
+    allImages = Array.from(document.querySelectorAll(
+      '.reveal img.slide-img, .reveal img.slide-img-large, .reveal img.slide-img-full, .photo-row img'
+    )).filter(img => img.src && !img.src.includes('data:'));
+  }
+  function showImage(idx) {
+    if (idx < 0) idx = allImages.length - 1;
+    if (idx >= allImages.length) idx = 0;
+    currentIdx = idx;
+    lbImg.src = allImages[idx].src;
+    lbCounter.textContent = (idx + 1) + ' / ' + allImages.length;
+  }
+  function openLightbox(img) {
+    collectImages();
+    currentIdx = allImages.indexOf(img);
+    if (currentIdx === -1) currentIdx = 0;
+    showImage(currentIdx);
+    overlay.classList.add('active');
+    Reveal.configure({ keyboard: false });
+  }
+  function closeLightbox() {
+    overlay.classList.remove('active');
+    Reveal.configure({ keyboard: true });
+  }
+
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('img.slide-img, img.slide-img-large, img.slide-img-full, .photo-row img');
+    if (img && !overlay.classList.contains('active')) { e.preventDefault(); e.stopPropagation(); openLightbox(img); }
+  });
+  document.getElementById('lb-close').addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeLightbox(); });
+  document.getElementById('lb-prev').addEventListener('click', function(e) { e.stopPropagation(); showImage(currentIdx - 1); });
+  document.getElementById('lb-next').addEventListener('click', function(e) { e.stopPropagation(); showImage(currentIdx + 1); });
+  document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImage(currentIdx - 1);
+    if (e.key === 'ArrowRight') showImage(currentIdx + 1);
+  });
+})();
+</script>
+</body>
+</html>
