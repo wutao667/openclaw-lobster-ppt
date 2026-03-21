@@ -441,12 +441,42 @@
   </aside>
 </section>
 
-<!-- 第27页：常用命令与安全性把控 -->
+<!-- 第27页：常用命令 -->
 <section>
-  <h2>常用命令与安全性把控</h2>
-  <div class="two-col" style="margin-top: 30px; text-align: left;"><div><h3 style="color: #58a6ff;">🛠 常用命令</h3><p style="font-size: 0.85em; color: #8b949e;"><code>/new</code>：重置当前会话，让 AI 忘掉刚刚聊天的临时上下文（长期记忆依然保留）。</p></div><div><h3 style="color: #f85149;">🛡 安全性原则</h3><p style="font-size: 0.85em; color: #8b949e;">Agent 有能力执行删文件、发邮件等操作。<br><strong>理解它的边界是把控风险的重要前提。</strong><br>涉及高危操作时，一定要设置“人工确认 (Approval)”机制，不要让它“裸奔”。</p></div></div>
+  <h2>常用命令</h2>
+  <div style="margin-top: 30px; text-align: left; display: inline-block;">
+    <p style="color: #8b949e; margin-bottom: 15px;"><code style="color: #58a6ff; font-size: 1.1em; padding: 2px 8px; background: rgba(88,166,255,0.1); border-radius: 4px;">/new</code> ：重置当前会话（清除临时上下文，保留长期记忆）</p>
+    <p style="color: #8b949e; margin-bottom: 15px;"><code style="color: #58a6ff; font-size: 1.1em; padding: 2px 8px; background: rgba(88,166,255,0.1); border-radius: 4px;">/status</code> ：查看当前 Agent 的运行状态、耗时与资源消耗</p>
+    <p style="color: #8b949e; margin-bottom: 15px;"><code style="color: #58a6ff; font-size: 1.1em; padding: 2px 8px; background: rgba(88,166,255,0.1); border-radius: 4px;">/verbose on</code> ：开启详细输出，查看 AI 的底层思考与工具调用过程</p>
+    <p style="color: #8b949e; margin-bottom: 15px;"><code style="color: #58a6ff; font-size: 1.1em; padding: 2px 8px; background: rgba(88,166,255,0.1); border-radius: 4px;">/model</code> ：动态切换当前会话的大语言模型</p>
+    <p style="color: #8b949e; margin-bottom: 15px;"><code style="color: #58a6ff; font-size: 1.1em; padding: 2px 8px; background: rgba(88,166,255,0.1); border-radius: 4px;">/think</code> ：开启或调整深度思考（Reasoning）模式</p>
+  </div>
   <aside class="notes">
-    使用时有个小技巧，觉得它聊偏了，随时打 /new 开个新会话。安全方面我要重点强调：能力越大，风险越大。不要盲目赋予它直接删代码、直接对外群发邮件的无条件权限。高危操作一定要留一道“人工点击确认”的锁。
+    使用 OpenClaw 时，有几个常用命令非常顺手：
+    发现话题聊偏了，随时输入 /new 重置上下文；
+    想知道花了多少 tokens，输入 /status；
+    如果是极客，想看底层怎么调用工具的，可以用 /verbose on 开启日志；
+    遇到复杂问题，还可以用 /model 临时切到更强的大模型，或者用 /think 开启深度思考。
+  </aside>
+</section>
+
+<!-- 第28页：OpenClaw的安全性 -->
+<section>
+  <h2>安全性：把控风险的前提</h2>
+  <div style="margin-top: 40px; padding: 30px; background: rgba(248,81,73,0.1); border-left: 4px solid #f85149; text-align: left; max-width: 80%; margin-left: auto; margin-right: auto;">
+    <h3 style="color: #f85149; margin-bottom: 15px;">🛡 核心原则</h3>
+    <p style="font-size: 0.9em; color: #e6edf3; line-height: 1.6;">
+      Agent 有能力执行删除文件、发送邮件、调用外部接口等高危操作。<br>
+      <strong>理解它的边界，是把控风险的重要前提。</strong>
+    </p>
+    <p style="font-size: 0.85em; color: #8b949e; margin-top: 15px;">
+      💡 建议：涉及核心数据与对外高危操作时，必须配置“人工确认 (Approval)”机制，绝不允许 AI 完全脱缰“裸奔”。
+    </p>
+  </div>
+  <aside class="notes">
+    除了怎么用，我还要特别强调安全性。
+    能力越大，风险越大。OpenClaw 是有执行力的，它能读写文件、发信息。如果你不理解它的边界，就可能引发不可逆的损失。
+    所以，记住一个原则：平时让它放手去干，但涉及到删库、发给外部客户的邮件等高危操作时，一定要加一把“人工确认”的锁。
   </aside>
 </section>
 
