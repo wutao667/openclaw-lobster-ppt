@@ -304,9 +304,23 @@
 <!-- 第8页：龙虾的技术架构 -->
 <section>
   <h2>龙虾的技术架构</h2>
-  <div style="margin-top: 40px; padding: 20px; border: 1px solid #30363d; border-radius: 10px; background: rgba(0,0,0,0.3);"><p style="color: #58a6ff; font-weight: bold; margin-bottom: 20px;">用户的聊天界面 (微信/飞书/Discord)</p><p style="color: #8b949e;">↓ 消息流</p><p style="color: #3fb950; font-weight: bold; margin: 20px 0;">OpenClaw Gateway (网关中心)</p><p style="color: #8b949e;">↙  意图分发  ↘</p><p style="color: #f85149; font-weight: bold; margin-bottom: 20px;">LLM 大脑 ↔ Agent ↔ MCP Skills (操作执行)</p></div>
+  
+  <div style="margin-top: 40px; text-align: center;">
+    <img src="ppt-assets/agent-overview.png" alt="LLM Agent Architecture" style="width: 100%; max-width: 900px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); background: #fdfdfd; padding: 15px;">
+  </div>
+  
+  <p style="color: #8b949e; font-size: 0.7em; margin-top: 20px;">经典 LLM Agent 架构模型 (来源: Lilian Weng)</p>
+  
   <aside class="notes">
-    这是 OpenClaw 的骨架。用户在熟悉的聊天工具里发消息，Gateway 接收后分发给具体的 Agent，Agent 动用大模型大脑进行思考，再调用底层 MCP 技能去执行，最后把结果反馈给用户。
+    这幅图展示了经典的智能体架构，也就是 OpenClaw 的技术骨架。
+    
+    大家可以看到，中间的 LLM（大脑）是绝对的中心引擎。
+    在它的周围，分布着三个关键模块：
+    1. 记忆 (Memory)：包含了存放历史上下文的短期记忆，以及可以持续积累知识的长期数据库；
+    2. 规划 (Planning)：也就是思维链和反思能力，负责把一个巨大的复杂任务拆解成一步步可执行的动作；
+    3. 工具 (Tools)：这就是 MCP 接入的各种 Skills，比如执行脚本、网页搜索等外部能力。
+    
+    可以说，懂了这幅图，就懂了 OpenClaw 到底是怎么在数字世界里运作的。
   </aside>
 </section>
 
