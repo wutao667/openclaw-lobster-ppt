@@ -306,20 +306,19 @@
   <h2>龙虾的技术架构（分层视角）</h2>
   
   <div style="margin-top: 30px; text-align: center;">
-    <img src="ppt-assets/layered-llm-arch.png" alt="Layered LLM App Stack Architecture" style="width: 100%; max-width: 850px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); background: #fdfdfd; padding: 15px;">
+    <img src="ppt-assets/agent-workflow-gemini.jpg" alt="Agent Architecture Workflow" style="width: 100%; max-width: 850px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); background: #fdfdfd; padding: 15px;">
   </div>
   
-  <p style="color: #8b949e; font-size: 0.7em; margin-top: 15px;">经典的 LLM 应用技术栈分层架构 (来源: a16z)</p>
+  <p style="color: #8b949e; font-size: 0.7em; margin-top: 15px;">OpenClaw AI Agent 核心架构：大模型 + 4大能力 (Memory, Planning, RAG, Skills)</p>
   
   <aside class="notes">
-    如果我们把 OpenClaw 的架构像盖房子一样拆开看，这就是一个典型的“分层技术栈”（大家可以看这张 a16z 发布的经典分层图）。
+    如果我们把 OpenClaw 的架构像盖房子一样拆开看，这就是一个典型的 Agent 架构图。
     
-    1. 底层（Foundation Layer）：是算力平台和基础大模型（比如 GPT-4、Gemini、开源模型等），它们提供最基础的“智力”保障。
-    2. 数据层（Data Layer）：负责让模型连接你的个人数据，这包括向量数据库、RAG 检索增强等，也就是让模型拥有“私有记忆”。
-    3. 编排与控制层（Orchestration/Control Layer）：这是核心的胶水层，负责 Prompt 的管理、Agent 思维链规划以及工具调用机制（MCP 和 Skills 就运行在这里）。
-    4. 顶层（App/Frontend Layer）：就是我们跟 OpenClaw 交互的地方，比如聊天窗口、语音对话或者静默的后台进程。
+    1. 底层（Foundation Layer）：大模型（LLM）提供基础智力。
+    2. 能力层（Capability Layer）：四大核心模块（Memory记忆、Planning规划、RAG知识库、Skills工具）为其赋能。
+    3. 顶层（Application Layer）：面向用户的真实业务流程，比如将“去北京旅行”拆解为查天气、定机票、搜酒店，并在失败时自主反思。
     
-    这种分层设计的好处是：任何一层都可以像换零件一样随时升级。
+    这种架构让它从被动问答进化为了主动解决问题。
   </aside>
 </section>
 
