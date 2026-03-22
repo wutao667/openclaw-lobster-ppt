@@ -305,8 +305,51 @@
 <section>
   <h2>龙虾的技术架构</h2>
   
-  <div style="margin-top: 30px; text-align: center;">
-    <img src="ppt-assets/agent-workflow-gemini.jpg" alt="Agent Architecture Workflow" style="width: 100%; max-width: 850px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); background: #fdfdfd; padding: 15px;">
+  <!-- CSS 原生重绘的 Agent 架构图 (包含 RAG) -->
+  <div style="display: flex; align-items: stretch; justify-content: center; gap: 30px; font-family: sans-serif; margin-top: 40px; width: 100%;">
+      
+      <!-- Left: LLM + 4 Capabilities -->
+      <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 420px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+              <div style="font-size: 1.5em; font-weight: bold; color: #58a6ff;">🧠 大模型 (LLM)</div>
+              <div style="font-size: 1.8em; color: #8b949e;">+</div>
+              <div style="font-size: 1.3em; font-weight: bold; color: #e6edf3;">4大核心能力</div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;">
+              <div style="flex: 1 1 45%; background: rgba(88,166,255,0.15); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(88,166,255,0.3); color: #79c0ff; font-size: 0.95em; white-space: nowrap;">💾 记忆<br><span style="font-size: 0.8em; opacity: 0.8;">(Memory)</span></div>
+              <div style="flex: 1 1 45%; background: rgba(63,185,80,0.15); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(63,185,80,0.3); color: #56d364; font-size: 0.95em; white-space: nowrap;">🧠 规划<br><span style="font-size: 0.8em; opacity: 0.8;">(Planning)</span></div>
+              <div style="flex: 1 1 45%; background: rgba(163,113,247,0.15); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(163,113,247,0.3); color: #d2a8ff; font-size: 0.95em; white-space: nowrap;">📚 知识库<br><span style="font-size: 0.8em; opacity: 0.8;">(RAG)</span></div>
+              <div style="flex: 1 1 45%; background: rgba(210,153,34,0.15); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(210,153,34,0.3); color: #e3b341; font-size: 0.95em; white-space: nowrap;">🛠️ 工具<br><span style="font-size: 0.8em; opacity: 0.8;">(Skills)</span></div>
+          </div>
+      </div>
+
+      <!-- Middle: Equals -->
+      <div style="font-size: 3.5em; color: #8b949e; font-weight: bold; padding: 0; display: flex; align-items: center;">=</div>
+
+      <!-- Right: AI Agent Workflow -->
+      <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); width: 500px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center;">
+          <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: #238636; color: white; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 1.1em; box-shadow: 0 0 15px rgba(35,134,54,0.6);">AI Agent</div>
+          
+          <div style="background: rgba(255,255,255,0.1); padding: 12px 15px; border-radius: 8px; text-align: left; color: #e6edf3; border-left: 5px solid #58a6ff; margin-top: 10px; margin-bottom: 15px;">
+              <strong style="color: #79c0ff;">👤 任务指令：</strong><span style="font-size: 1.05em; margin-left: 5px;">“策划下周去<span style="color: #ff7b72; font-weight: bold;">北京</span>旅行”</span>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; border: 1px dashed rgba(255,255,255,0.2);">
+              <div style="text-align: center; width: 40%;">
+                  <div style="font-size: 2.5em; margin-bottom: 5px;">🤖</div>
+                  <div style="color: #e6edf3; font-weight: bold; font-size: 1em;">Agent 大脑</div>
+                  <div style="color: #8b949e; font-size: 0.8em; margin-top: 5px;">思考 → 规划 → 反思</div>
+              </div>
+              
+              <div style="font-size: 1.8em; color: #8b949e;">⇄</div>
+              
+              <div style="display: flex; flex-direction: column; gap: 8px; width: 45%;">
+                  <div style="background: rgba(255,255,255,0.08); padding: 6px; border-radius: 6px; font-size: 0.9em; text-align: center; color: #c9d1d9;">🌤️ 查<span style="color: #ff7b72;">北京</span>天气</div>
+                  <div style="background: rgba(255,255,255,0.08); padding: 6px; border-radius: 6px; font-size: 0.9em; text-align: center; color: #c9d1d9;">✈️ 订<span style="color: #ff7b72;">北京</span>机票</div>
+                  <div style="background: rgba(255,255,255,0.08); padding: 6px; border-radius: 6px; font-size: 0.9em; text-align: center; color: #c9d1d9;">🏨 搜<span style="color: #ff7b72;">北京</span>酒店</div>
+              </div>
+          </div>
+      </div>
   </div>
   
   <aside class="notes">
