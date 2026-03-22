@@ -326,22 +326,64 @@
 <!-- 第9页：为什么不是 ChatGPT？ -->
 <section>
   <h2>为什么不是 ChatGPT？</h2>
-  <p style="color: #8b949e; font-size: 0.8em; margin-bottom: 20px;">被动问答 vs 主动执行 (Agent 核心工作流)</p>
+  <p style="color: #8b949e; font-size: 0.8em; margin-bottom: 10px;">被动问答 vs 主动执行 (Agent 核心工作流)</p>
   
-  <div style="margin-top: 10px; text-align: center;">
-    <img src="ppt-assets/agent-workflow-gemini.jpg" alt="AI Agent 的组成与自主行动流程" style="width: 100%; max-width: 850px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); background: #fdfdfd; padding: 10px;">
+  <!-- CSS 原生重绘的 Agent 架构图 -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; font-family: sans-serif; margin-top: 30px; transform: scale(0.95);">
+      <!-- Left: LLM + 3 Capabilities -->
+      <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+          <div style="font-size: 1.6em; font-weight: bold; color: #58a6ff; margin-bottom: 15px;">🧠 大模型 (LLM)</div>
+          <div style="font-size: 2em; color: #8b949e; margin: 10px 0;">+</div>
+          <div style="font-size: 1.3em; font-weight: bold; color: #e6edf3; margin-bottom: 15px;">3大核心能力</div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="background: rgba(88,166,255,0.15); padding: 12px; border-radius: 8px; border: 1px solid rgba(88,166,255,0.3); color: #79c0ff; font-size: 1.1em;">💾 记忆 (Memory)</div>
+              <div style="background: rgba(63,185,80,0.15); padding: 12px; border-radius: 8px; border: 1px solid rgba(63,185,80,0.3); color: #56d364; font-size: 1.1em;">🧠 规划 (Planning)</div>
+              <div style="background: rgba(210,153,34,0.15); padding: 12px; border-radius: 8px; border: 1px solid rgba(210,153,34,0.3); color: #e3b341; font-size: 1.1em;">🛠️ 工具 (Skills)</div>
+          </div>
+      </div>
+
+      <!-- Middle: Equals -->
+      <div style="font-size: 3.5em; color: #8b949e; font-weight: bold; padding: 0 10px;">=</div>
+
+      <!-- Right: AI Agent Workflow -->
+      <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); width: 480px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+          <div style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: #238636; color: white; padding: 6px 20px; border-radius: 20px; font-weight: bold; font-size: 1.2em; box-shadow: 0 0 15px rgba(35,134,54,0.6);">AI Agent</div>
+          
+          <div style="margin-top: 25px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; text-align: left; color: #e6edf3; border-left: 5px solid #58a6ff;">
+              <strong style="color: #79c0ff;">👤 用户指令：</strong><br>
+              <span style="font-size: 1.1em;">“策划下周去<span style="color: #ff7b72; font-weight: bold;">北京</span>旅行”</span>
+          </div>
+          
+          <div style="text-align: center; color: #8b949e; margin: 12px 0;">⬇️ 自主拆解与执行</div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 18px; border-radius: 12px; border: 1px dashed rgba(255,255,255,0.2);">
+              <div style="text-align: center; width: 45%;">
+                  <div style="font-size: 3em; margin-bottom: 5px;">🤖</div>
+                  <div style="color: #e6edf3; font-weight: bold; font-size: 1.1em;">Agent 大脑</div>
+                  <div style="color: #8b949e; font-size: 0.85em; margin-top: 5px;">思考 → 规划 → 反思</div>
+              </div>
+              
+              <div style="font-size: 2em; color: #8b949e;">⇄</div>
+              
+              <div style="display: flex; flex-direction: column; gap: 10px; width: 45%;">
+                  <div style="background: rgba(255,255,255,0.08); padding: 8px; border-radius: 6px; font-size: 0.95em; text-align: center; color: #c9d1d9;">🌤️ 查<span style="color: #ff7b72;">北京</span>天气</div>
+                  <div style="background: rgba(255,255,255,0.08); padding: 8px; border-radius: 6px; font-size: 0.95em; text-align: center; color: #c9d1d9;">✈️ 订<span style="color: #ff7b72;">北京</span>机票</div>
+                  <div style="background: rgba(255,255,255,0.08); padding: 8px; border-radius: 6px; font-size: 0.95em; text-align: center; color: #c9d1d9;">🏨 搜<span style="color: #ff7b72;">北京</span>酒店</div>
+              </div>
+          </div>
+          
+          <div style="text-align: center; color: #8b949e; margin: 12px 0;">⬇️ 完成目标</div>
+          
+          <div style="background: rgba(63,185,80,0.15); padding: 15px; border-radius: 8px; text-align: center; color: #56d364; border: 1px solid rgba(63,185,80,0.4); font-size: 1.1em;">
+              <strong>✅ 输出完整北京旅行方案</strong>
+          </div>
+      </div>
   </div>
   
   <aside class="notes">
-    很多人会问，这跟我们平常用 ChatGPT 有什么区别？
-    
-    看这张图就能明白：ChatGPT 只是单纯的“大模型”，你问一句，它答一句，是被动的。
-    而 OpenClaw 是一个完整的 AI Agent（智能体）。它是“大模型 + 4大核心能力（记忆、知识、工具、流程）”的结合体。
-    
-    最核心的区别在于右半部分：它具备“自主行动流程”。
-    当你给它一个大目标（比如：策划下周去北京旅行），它会自己思考、拆解任务（查北京天气、定北京机票、搜北京酒店），然后按顺序自己去调用工具执行。如果中间遇到失败（比如酒店满房），它还会“自主反思”并调整策略换一家酒店。
-    
-    这就是从“聊天机器人”到“数字管家”的跨越。
+    很多人会问，这跟我们平常用 ChatGPT 有什么区别？看这张对比图就能明白：ChatGPT 只是单纯的“大模型”，你问一句它答一句，是被动的。
+    而 OpenClaw 是一个完整的 AI Agent。它是“大模型 + 3大核心能力（记忆、规划、工具）”的结合体。
+    最核心的区别在于右侧的“自主行动流程”。当你给它一个大目标（比如：策划下周去北京旅行），它会自己思考、拆解任务（查北京天气、定北京机票、搜北京酒店），然后自己调用工具执行，失败了还会自主反思。这就是从“聊天机器人”到“数字管家”的跨越。
   </aside>
 </section>
 
