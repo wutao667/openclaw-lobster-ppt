@@ -303,24 +303,23 @@
 
 <!-- 第8页：龙虾的技术架构 -->
 <section>
-  <h2>龙虾的技术架构</h2>
+  <h2>龙虾的技术架构（分层视角）</h2>
   
-  <div style="margin-top: 40px; text-align: center;">
-    <img src="ppt-assets/agent-overview.png" alt="LLM Agent Architecture" style="width: 100%; max-width: 900px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); background: #fdfdfd; padding: 15px;">
+  <div style="margin-top: 30px; text-align: center;">
+    <img src="ppt-assets/layered-llm-arch.png" alt="Layered LLM App Stack Architecture" style="width: 100%; max-width: 850px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); background: #fdfdfd; padding: 15px;">
   </div>
   
-  <p style="color: #8b949e; font-size: 0.7em; margin-top: 20px;">经典 LLM Agent 架构模型 (来源: Lilian Weng)</p>
+  <p style="color: #8b949e; font-size: 0.7em; margin-top: 15px;">经典的 LLM 应用技术栈分层架构 (来源: a16z)</p>
   
   <aside class="notes">
-    这幅图展示了经典的智能体架构，也就是 OpenClaw 的技术骨架。
+    如果我们把 OpenClaw 的架构像盖房子一样拆开看，这就是一个典型的“分层技术栈”（大家可以看这张 a16z 发布的经典分层图）。
     
-    大家可以看到，中间的 LLM（大脑）是绝对的中心引擎。
-    在它的周围，分布着三个关键模块：
-    1. 记忆 (Memory)：包含了存放历史上下文的短期记忆，以及可以持续积累知识的长期数据库；
-    2. 规划 (Planning)：也就是思维链和反思能力，负责把一个巨大的复杂任务拆解成一步步可执行的动作；
-    3. 工具 (Tools)：这就是 MCP 接入的各种 Skills，比如执行脚本、网页搜索等外部能力。
+    1. 底层（Foundation Layer）：是算力平台和基础大模型（比如 GPT-4、Gemini、开源模型等），它们提供最基础的“智力”保障。
+    2. 数据层（Data Layer）：负责让模型连接你的个人数据，这包括向量数据库、RAG 检索增强等，也就是让模型拥有“私有记忆”。
+    3. 编排与控制层（Orchestration/Control Layer）：这是核心的胶水层，负责 Prompt 的管理、Agent 思维链规划以及工具调用机制（MCP 和 Skills 就运行在这里）。
+    4. 顶层（App/Frontend Layer）：就是我们跟 OpenClaw 交互的地方，比如聊天窗口、语音对话或者静默的后台进程。
     
-    可以说，懂了这幅图，就懂了 OpenClaw 到底是怎么在数字世界里运作的。
+    这种分层设计的好处是：任何一层都可以像换零件一样随时升级。
   </aside>
 </section>
 
