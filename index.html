@@ -470,51 +470,55 @@
 
 <!-- 第11页：OpenClaw 发展简史 -->
 <section>
-  <h2 style="margin-bottom: 60px;">OpenClaw 发展简史</h2>
+  <h2 style="margin-bottom: 50px;">OpenClaw 发展简史</h2>
   
-  <div style="position: relative; width: 90%; max-width: 950px; margin: 0 auto; padding: 40px 0;">
-    <!-- Vertical Line -->
-    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, rgba(88,166,255,0.5), rgba(255,123,114,0.5)); transform: translateX(-50%);"></div>
+  <!-- Timeline Container -->
+  <div style="position: relative; width: 100%; max-width: 1000px; margin: 0 auto; min-height: 500px;">
+    
+    <!-- Central Line -->
+    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, #58a6ff, #d29922, #ff7b72); transform: translateX(-50%); opacity: 0.3;"></div>
 
-    <!-- 2025 Q4 - 雏形诞生 -->
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; position: relative;">
-      <div style="width: 45%; text-align: right; padding-right: 40px;">
-        <h3 style="color: #58a6ff; margin: 0; font-size: 1.4em;">2025. Q4</h3>
-        <p style="font-size: 1.1em; color: #e6edf3; margin: 10px 0; font-weight: bold;">雏形诞生</p>
-        <p style="font-size: 0.9em; color: #8b949e; margin: 5px 0; line-height: 1.4;">Peter Steinberger 构思一个“不需要对话框”的 Agent 框架。</p>
+    <!-- Event 1: Left -->
+    <div style="position: relative; display: flex; align-items: center; margin-bottom: 70px;">
+      <div style="width: 50%; text-align: right; padding-right: 50px; box-sizing: border-box;">
+        <h3 style="color: #58a6ff; margin: 0; font-size: 1.3em;">2025. Q4</h3>
+        <p style="font-size: 1.1em; color: #e6edf3; margin: 8px 0; font-weight: bold;">雏形诞生</p>
+        <p style="font-size: 0.85em; color: #8b949e; margin: 0; line-height: 1.5;">Peter Steinberger 构思一个<br>“不需要对话框”的 Agent 框架。</p>
       </div>
-      <div style="width: 24px; height: 24px; background: #58a6ff; border-radius: 50%; z-index: 1; border: 5px solid #0d1117; box-shadow: 0 0 15px rgba(88,166,255,0.4);"></div>
-      <div style="width: 45%;"></div>
+      <!-- Dot -->
+      <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; background: #58a6ff; border-radius: 50%; border: 4px solid #0d1117; box-shadow: 0 0 15px rgba(88,166,255,0.5); z-index: 2;"></div>
+      <div style="width: 50%;"></div>
     </div>
 
-    <!-- 2026.01 - 开源首发 -->
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; position: relative;">
-      <div style="width: 45%;"></div>
-      <div style="width: 24px; height: 24px; background: #d29922; border-radius: 50%; z-index: 1; border: 5px solid #0d1117; box-shadow: 0 0 15px rgba(210,153,34,0.4);"></div>
-      <div style="width: 45%; text-align: left; padding-left: 40px;">
-        <h3 style="color: #d29922; margin: 0; font-size: 1.4em;">2026.01</h3>
-        <p style="font-size: 1.1em; color: #e6edf3; margin: 10px 0; font-weight: bold;">开源首发</p>
-        <p style="font-size: 0.9em; color: #8b949e; margin: 5px 0; line-height: 1.4;">GitHub 正式发布。凭借“离线、极速、多频道”特性迅速吸引全球极客。</p>
+    <!-- Event 2: Right -->
+    <div style="position: relative; display: flex; align-items: center; margin-bottom: 70px;">
+      <div style="width: 50%;"></div>
+      <!-- Dot -->
+      <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; background: #d29922; border-radius: 50%; border: 4px solid #0d1117; box-shadow: 0 0 15px rgba(210,153,34,0.4); z-index: 2;"></div>
+      <div style="width: 50%; text-align: left; padding-left: 50px; box-sizing: border-box;">
+        <h3 style="color: #d29922; margin: 0; font-size: 1.3em;">2026.01</h3>
+        <p style="font-size: 1.1em; color: #e6edf3; margin: 8px 0; font-weight: bold;">开源首发</p>
+        <p style="font-size: 0.85em; color: #8b949e; margin: 0; line-height: 1.5;">GitHub 正式发布。凭借“离线、极速、<br>多频道”特性迅速吸引全球极客。</p>
       </div>
     </div>
 
-    <!-- 2026.02 - 破圈奇迹 -->
-    <div style="display: flex; justify-content: space-between; align-items: center; position: relative;">
-      <div style="width: 45%; text-align: right; padding-right: 40px;">
-        <h3 style="color: #ff7b72; margin: 0; font-size: 1.4em;">2026.02</h3>
-        <p style="font-size: 1.1em; color: #e6edf3; margin: 10px 0; font-weight: bold;">破圈奇迹</p>
-        <p style="font-size: 0.9em; color: #8b949e; margin: 5px 0; line-height: 1.4;">Moltbook 联动爆发，60天斩获 25W+ Star，刷新 GitHub 增长纪录。</p>
+    <!-- Event 3: Left -->
+    <div style="position: relative; display: flex; align-items: center;">
+      <div style="width: 50%; text-align: right; padding-right: 50px; box-sizing: border-box;">
+        <h3 style="color: #ff7b72; margin: 0; font-size: 1.3em;">2026.02</h3>
+        <p style="font-size: 1.1em; color: #e6edf3; margin: 8px 0; font-weight: bold;">破圈奇迹</p>
+        <p style="font-size: 0.85em; color: #8b949e; margin: 0; line-height: 1.5;">Moltbook 联动爆发，60天斩获<br>25W+ Star，刷新 GitHub 纪录。</p>
       </div>
-      <div style="width: 24px; height: 24px; background: #ff7b72; border-radius: 50%; z-index: 1; border: 5px solid #0d1117; box-shadow: 0 0 15px rgba(255,123,114,0.4);"></div>
-      <div style="width: 45%;"></div>
+      <!-- Dot -->
+      <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; background: #ff7b72; border-radius: 50%; border: 4px solid #0d1117; box-shadow: 0 0 15px rgba(255,123,114,0.4); z-index: 2;"></div>
+      <div style="width: 50%;"></div>
     </div>
 
   </div>
 
   <aside class="notes">
-    这一页我们精简了时间轴，只看最关键的三个起点：
-    从 25 年底的想法雏形，到 26 年初的开源，再到 2 月份彻底引爆全球。
-    重点在于：它在短短 60 天内，走完了以往开源项目十年才能达到的高度。
+    修复了排版对齐问题。
+    第一个故事：雏形；第二个故事：开源；第三个故事：破圈。
   </aside>
 </section>
 
