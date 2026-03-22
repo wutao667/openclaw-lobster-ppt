@@ -415,70 +415,58 @@
 
 <!-- 第10页：与其他 AI 类工具的差别 -->
 <section>
-  <h2>为什么不是豆包？与其他 AI 工具的差别</h2>
-  <p style="color: #8b949e; font-size: 0.8em; margin-bottom: 20px;">被动问答 vs 主动执行 (Agent 核心工作流)</p>
+  <h2 style="margin-bottom: 40px;">谁才是真正的 AI Agent？</h2>
   
-  <!-- CSS 原生重绘的 Agent 架构图 (横屏适配版) -->
-  <div style="display: flex; align-items: stretch; justify-content: center; gap: 30px; font-family: sans-serif; margin-top: 20px; width: 100%;">
-      
-      <!-- Left: LLM + 3 Capabilities -->
-      <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); text-align: center; width: 420px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center;">
-          <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
-              <div style="font-size: 1.5em; font-weight: bold; color: #58a6ff;">🧠 大模型 (LLM)</div>
-              <div style="font-size: 1.8em; color: #8b949e;">+</div>
-              <div style="font-size: 1.3em; font-weight: bold; color: #e6edf3;">3大核心能力</div>
-          </div>
-          <div style="display: flex; justify-content: space-between; gap: 10px;">
-              <div style="flex: 1; background: rgba(88,166,255,0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(88,166,255,0.3); color: #79c0ff; font-size: 1em; white-space: nowrap;">💾 记忆<br><span style="font-size: 0.8em; opacity: 0.8;">(Memory)</span></div>
-              <div style="flex: 1; background: rgba(63,185,80,0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(63,185,80,0.3); color: #56d364; font-size: 1em; white-space: nowrap;">🧠 规划<br><span style="font-size: 0.8em; opacity: 0.8;">(Planning)</span></div>
-              <div style="flex: 1; background: rgba(210,153,34,0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(210,153,34,0.3); color: #e3b341; font-size: 1em; white-space: nowrap;">🛠️ 工具<br><span style="font-size: 0.8em; opacity: 0.8;">(Skills)</span></div>
-          </div>
+  <div style="width: 100%; max-width: 900px; margin: 0 auto; text-align: left;">
+    
+    <!-- 豆包 -->
+    <div style="display: flex; align-items: center; padding: 15px 25px; background: rgba(255,255,255,0.03); margin-bottom: 12px; border-radius: 12px; border-left: 5px solid #ff7b72;">
+      <div style="font-size: 2em; margin-right: 25px;">☁️</div>
+      <div style="flex: 1;">
+        <span style="font-weight: bold; font-size: 1.1em; color: #ff7b72;">豆包 (Doubao)</span>
+        <span style="color: #8b949e; margin: 0 15px;">|</span>
+        <span style="color: #c9d1d9;">被动咨询：停留在“对话框”里的百科全书，等待提问。</span>
       </div>
+    </div>
 
-      <!-- Middle: Equals -->
-      <div style="font-size: 3.5em; color: #8b949e; font-weight: bold; padding: 0; display: flex; align-items: center;">=</div>
-
-      <!-- Right: AI Agent Workflow -->
-      <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); width: 500px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center;">
-          <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: #238636; color: white; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 1.1em; box-shadow: 0 0 15px rgba(35,134,54,0.6);">AI Agent 工作流</div>
-          
-          <div style="background: rgba(255,255,255,0.1); padding: 12px 15px; border-radius: 8px; text-align: left; color: #e6edf3; border-left: 5px solid #58a6ff; margin-top: 10px; margin-bottom: 15px;">
-              <strong style="color: #79c0ff;">👤 指令：</strong><span style="font-size: 1.05em; margin-left: 5px;">“策划下周去<span style="color: #ff7b72; font-weight: bold;">北京</span>旅行”</span>
-          </div>
-          
-          <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; border: 1px dashed rgba(255,255,255,0.2);">
-              <div style="text-align: center; width: 40%;">
-                  <div style="font-size: 2.5em; margin-bottom: 5px;">🤖</div>
-                  <div style="color: #e6edf3; font-weight: bold; font-size: 1em;">Agent 大脑</div>
-                  <div style="color: #8b949e; font-size: 0.8em; margin-top: 5px;">思考 → 规划 → 反思</div>
-              </div>
-              
-              <div style="font-size: 1.8em; color: #8b949e;">⇄</div>
-              
-              <div style="display: flex; flex-direction: column; gap: 8px; width: 45%;">
-                  <div style="background: rgba(255,255,255,0.08); padding: 6px; border-radius: 6px; font-size: 0.9em; text-align: center; color: #c9d1d9;">🌤️ 查<span style="color: #ff7b72;">北京</span>天气</div>
-                  <div style="background: rgba(255,255,255,0.08); padding: 6px; border-radius: 6px; font-size: 0.9em; text-align: center; color: #c9d1d9;">✈️ 订<span style="color: #ff7b72;">北京</span>机票</div>
-                  <div style="background: rgba(255,255,255,0.08); padding: 6px; border-radius: 6px; font-size: 0.9em; text-align: center; color: #c9d1d9;">🏨 搜<span style="color: #ff7b72;">北京</span>酒店</div>
-              </div>
-          </div>
+    <!-- Claude -->
+    <div style="display: flex; align-items: center; padding: 15px 25px; background: rgba(255,255,255,0.03); margin-bottom: 12px; border-radius: 12px; border-left: 5px solid #d29922;">
+      <div style="font-size: 2em; margin-right: 25px;">📖</div>
+      <div style="flex: 1;">
+        <span style="font-weight: bold; font-size: 1.1em; color: #d29922;">Claude</span>
+        <span style="color: #8b949e; margin: 0 15px;">|</span>
+        <span style="color: #c9d1d9;">思考助手：最强逻辑分析与长文创作，辅助大脑思考。</span>
       </div>
+    </div>
+
+    <!-- Manus -->
+    <div style="display: flex; align-items: center; padding: 15px 25px; background: rgba(255,255,255,0.03); margin-bottom: 12px; border-radius: 12px; border-left: 5px solid #58a6ff;">
+      <div style="font-size: 2em; margin-right: 25px;">🛠️</div>
+      <div style="flex: 1;">
+        <span style="font-weight: bold; font-size: 1.1em; color: #58a6ff;">Manus</span>
+        <span style="color: #8b949e; margin: 0 15px;">|</span>
+        <span style="color: #c9d1d9;">通用执行器：具备独立沙盒环境，能完成复杂的自动化流程。</span>
+      </div>
+    </div>
+
+    <!-- OpenClaw -->
+    <div style="display: flex; align-items: center; padding: 20px 25px; background: rgba(88,166,255,0.1); margin-top: 25px; border-radius: 12px; border-left: 8px solid #3fb950; box-shadow: 0 0 20px rgba(63,185,80,0.2);">
+      <div style="font-size: 2.5em; margin-right: 25px;">🦞</div>
+      <div style="flex: 1;">
+        <span style="font-weight: bold; font-size: 1.3em; color: #3fb950;">OpenClaw (数字龙虾)</span>
+        <span style="color: #8b949e; margin: 0 15px;">|</span>
+        <span style="color: #e6edf3; font-weight: bold;">终极分身：不仅懂你的习惯，更具备“手脚”随时为你交付结果。</span>
+      </div>
+    </div>
+
   </div>
-  
-  <ul style="text-align: left; display: inline-block; margin-top: 20px; line-height: 1.8; color: #e6edf3; font-size: 0.85em;">
-    <li><strong>豆包 / 千问等</strong>：云端的被动式 AI，聪明但“拿不到你的本地数据”，无法帮你操作电脑。</li>
-    <li><strong>Claude Code / Cursor</strong>：顶尖的编程辅助，但大多局限在 IDE 或终端里，偏专业开发。</li>
-    <li><strong>Manus</strong>：闭源的强大 Agent，按月扣费且不易私有化定制。</li>
-    <li><strong style="color:#f85149">OpenClaw</strong>：基于你最习惯的聊天平台（微信等），真正拥有的专属“个人数字管家”。</li>
-  </ul>
-  
+
   <aside class="notes">
-    看完核心特点，我们再来回答一个经典问题：这跟我们平常免费用的豆包、或者是高大上的 Manus 有什么区别？
-    
-    看上面的对比图就能明白：豆包作为聊天助手时，主要还是单纯的“大模型”，你问一句它答一句，是被动的。
-    
-    而 OpenClaw 是一个完整的 AI Agent。最核心的区别在于它的“自主行动流程”。当你给它一个大目标（比如：策划下周去北京旅行），它会自己思考、拆解任务、调用工具执行，失败了还会反思。这就是从“聊天机器人”到“数字管家”的跨越。
-    
-    更重要的是，与那些高昂的闭源 Agent 或仅仅用于写代码的工具不同，OpenClaw 是开源、高度可定制的，而且直接嵌入在你的微信或飞书里，是你真正的私有分身。
+    这一页我们做一个横向对比。
+    大家平时用得最多的豆包和 Claude，其实更多是“被动”的。它们很有学问，但需要你不断地问，它才会答，始终停留在对话框里。
+    Manus 是最近非常火的通用 Agent，它开始有手脚了，能自己去上网、写代码。
+    而 OpenClaw，也就是我们的数字龙虾，它的独特之处在于它是你真正的“数字延伸”。它寄生在你的工作流里，拥有你的长期记忆，能调用各种 Skill。
+    它不只是一个会干活的机器，而是一个懂得怎么为你干活的、有灵魂的助理。
   </aside>
 </section>
 
