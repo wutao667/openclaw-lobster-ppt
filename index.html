@@ -1091,21 +1091,35 @@
 
 <!-- 第37页：OpenClaw的安全性 -->
 <section>
-  <h2>安全性：把控风险的前提</h2>
-  <div style="margin-top: 40px; padding: 30px; background: rgba(248,81,73,0.1); border-left: 4px solid #f85149; text-align: left; max-width: 80%; margin-left: auto; margin-right: auto;">
-    <h3 style="color: #f85149; margin-bottom: 15px;">🛡 核心原则</h3>
-    <p style="font-size: 0.9em; color: #e6edf3; line-height: 1.6;">
-      Agent 有能力执行删除文件、发送邮件、调用外部接口等高危操作。<br>
-      <strong>理解它的边界，是把控风险的重要前提。</strong>
-    </p>
-    <p style="font-size: 0.85em; color: #8b949e; margin-top: 15px;">
-      💡 建议：涉及核心数据与对外高危操作时，必须配置"人工确认 (Approval)"机制，绝不允许 AI 完全脱缰"裸奔"。
-    </p>
+  <h2>安全性和风险</h2>
+  <div style="display: flex; gap: 40px; margin-top: 40px; align-items: stretch;">
+    <!-- 左侧：安全建议 -->
+    <div style="flex: 1; text-align: left; padding: 30px; background: rgba(248,81,73,0.05); border-radius: 15px; border: 2px solid #f85149;">
+      <h3 style="color: #f85149; margin-bottom: 25px; font-size: 1.2em;">🛡 安全建议</h3>
+      <ul style="color: #e6edf3; font-size: 1.05em; line-height: 2.2; margin: 0; padding-left: 20px;">
+        <li class="fragment" style="margin-bottom: 15px;">不要安装在<strong style="color: #f85149;">工作机器</strong>上</li>
+        <li class="fragment" style="margin-bottom: 15px;">合理控制<strong style="color: #f85149;">电脑权限</strong></li>
+        <li class="fragment" style="margin-bottom: 15px;">不要把<strong style="color: #f85149;">重要密码</strong>给他</li>
+        <li class="fragment" style="margin-bottom: 15px;">不要把<strong style="color: #f85149;">敏感信息</strong>发给他</li>
+        <li class="fragment" style="margin-bottom: 15px;">注意甄别恶意<strong style="color: #f85149;">skill 插件</strong></li>
+      </ul>
+    </div>
+    
+    <!-- 右侧：图片 -->
+    <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+      <img src="ppt-assets/safety-tiger-cage.png" class="fragment" style="max-width: 100%; max-height: 500px; object-fit: contain; border-radius: 10px;" alt="笼中老虎披龙虾皮">
+    </div>
   </div>
+  
+  <!-- 底部：灰色提示 -->
+  <p style="margin-top: 30px; color: #8b949e; font-size: 0.9em; text-align: center;">
+    理解它是把控风险的重要前提。
+  </p>
+  
   <aside class="notes">
-    除了怎么用，我还要特别强调安全性。
-    能力越大，风险越大。OpenClaw 是有执行力的，它能读写文件、发信息。如果你不理解它的边界，就可能引发不可逆的损失。
-    所以，记住一个原则：平时让它放手去干，但涉及到删库、发给外部客户的邮件等高危操作时，一定要加一把"人工确认"的锁。
+    安全性和风险是必须重视的话题。OpenClaw 是有执行力的 Agent，它能读写文件、发信息、调用外部接口。
+    所以请记住这些安全建议：不要安装在工作机器上，合理控制权限，不要把重要密码和敏感信息给它，注意甄别恶意的 skill 插件。
+    理解它的边界，是把控风险的重要前提。
   </aside>
 </section>
 
