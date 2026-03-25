@@ -988,8 +988,7 @@
   </aside>
 </section>
 
-
-<!-- 第 36 页：龙虾的"江湖门派" -->
+<!-- 第 32 页：龙虾的"江湖门派" -->
 <section>
   <h2>龙虾的"江湖门派"</h2>
   <div style="display: flex; gap: 30px; align-items: center; justify-content: center; margin-top: 30px; height: 500px;">
@@ -1016,7 +1015,7 @@
   </aside>
 </section>
 
-<!-- 第 32 页：OpenClaw 的缺点 -->
+<!-- 第 33 页：OpenClaw 的缺点 -->
 <section>
   <h2>OpenClaw 的缺点</h2>
   <div style="display: flex; gap: 40px; align-items: center; justify-content: center; margin-top: 40px; height: 450px;">
@@ -1040,7 +1039,7 @@
   </aside>
 </section>
 
-<!-- 第 32 页：OpenClaw 的通信拓扑结构 -->
+<!-- 第 34 页：OpenClaw 的通信拓扑结构 -->
 <section>
   <h2>OpenClaw 的通信拓扑结构</h2>
   <div style="display: flex; align-items: center; justify-content: center; height: 500px; margin-top: 20px;">
@@ -1050,7 +1049,6 @@
     这是 OpenClaw 的通信拓扑结构图，展示了主机、大模型、龙虾 Agent、通道和会话之间的多层级关系。
   </aside>
 </section>
-
 
 <!-- 第35页：OpenClaw的安全性 -->
 <section>
@@ -1081,7 +1079,18 @@
   </aside>
 </section>
 
-<!-- 第39页：AI 时代之前 vs AI 时代之后 -->
+<!-- 第37页：人类替代率报告 -->
+<section>
+  <h2>插曲：人类替代率报告</h2>
+  <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px;">
+    <img src="ppt-assets/anthropic-ai-replacement-report.png" class="fragment" style="max-width: 90%; max-height: 600px; object-fit: contain;" alt="Anthropic 人类技能 AI 替代率报告">
+  </div>
+  <aside class="notes">
+    Anthropic 发布的这份人类技能 AI 替代率报告，蓝色是各职业 AI 理论可覆盖范围，红色是实际目前覆盖。可以看到，管理、商业与金融、计算机与数学等白领工作理论替代率极高，但实际落地还很少。而办公室与行政等重复性工作，实际替代率已经很高。
+  </aside>
+</section>
+
+<!-- 第38页：AI 时代之前 vs AI 时代之后 -->
 <section>
   <h2>AI 时代之前 vs AI 时代之后</h2>
   <div style="display: flex; gap: 50px; margin-top: 40px;">
@@ -1112,18 +1121,7 @@
   </aside>
 </section>
 
-<!-- 第38页：人类替代率报告 -->
-<section>
-  <h2>人类替代率报告</h2>
-  <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px;">
-    <img src="ppt-assets/anthropic-ai-replacement-report.png" class="fragment" style="max-width: 90%; max-height: 600px; object-fit: contain;" alt="Anthropic 人类技能 AI 替代率报告">
-  </div>
-  <aside class="notes">
-    Anthropic 发布的这份人类技能 AI 替代率报告，蓝色是各职业 AI 理论可覆盖范围，红色是实际目前覆盖。可以看到，管理、商业与金融、计算机与数学等白领工作理论替代率极高，但实际落地还很少。而办公室与行政等重复性工作，实际替代率已经很高。
-  </aside>
-</section>
-
-<!-- 第40页：一些建议 -->
+<!-- 第39页：一些建议 -->
 <section>
   <h2>一些建议</h2>
   <div style="display: flex; flex-direction: column; gap: 35px; align-items: center; justify-content: center; margin-top: 50px;">
@@ -1136,8 +1134,7 @@
   </aside>
 </section>
 
-
-<!-- 第41页：Keep Forward -->
+<!-- 第40页：Keep Forward -->
 <section>
   <h2>Keep Forward</h2>
   <h2 style="margin-top: 40px; color: #58a6ff;">勇敢尝试吧！</h2>
@@ -1166,74 +1163,3 @@
   </aside>
 </section>
 
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
-<script>
-Reveal.initialize({
-  hash: true,
-  slideNumber: 'c/t',
-  showSlideNumber: 'all',
-  transition: 'slide',
-  transitionSpeed: 'default',
-  backgroundTransition: 'fade',
-  width: 1280,
-  height: 720,
-  margin: 0.06,
-  center: true,
-  plugins: [RevealHighlight, RevealNotes]
-});
-
-// Lightbox
-(function() {
-  const overlay = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lb-img');
-  const lbCounter = document.getElementById('lb-counter');
-  let allImages = [], currentIdx = 0;
-
-  function collectImages() {
-    allImages = Array.from(document.querySelectorAll(
-      '.reveal img.slide-img, .reveal img.slide-img-large, .reveal img.slide-img-full, .photo-row img'
-    )).filter(img => img.src && !img.src.includes('data:'));
-  }
-  function showImage(idx) {
-    if (idx < 0) idx = allImages.length - 1;
-    if (idx >= allImages.length) idx = 0;
-    currentIdx = idx;
-    lbImg.src = allImages[idx].src;
-    lbCounter.textContent = (idx + 1) + ' / ' + allImages.length;
-  }
-  function openLightbox(img) {
-    collectImages();
-    currentIdx = allImages.indexOf(img);
-    if (currentIdx === -1) currentIdx = 0;
-    showImage(currentIdx);
-    overlay.classList.add('active');
-    Reveal.configure({ keyboard: false });
-  }
-  function closeLightbox() {
-    overlay.classList.remove('active');
-    Reveal.configure({ keyboard: true });
-  }
-
-  document.addEventListener('click', function(e) {
-    const img = e.target.closest('img.slide-img, img.slide-img-large, img.slide-img-full, .photo-row img');
-    if (img && !overlay.classList.contains('active')) { e.preventDefault(); e.stopPropagation(); openLightbox(img); }
-  });
-  document.getElementById('lb-close').addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
-  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeLightbox(); });
-  document.getElementById('lb-prev').addEventListener('click', function(e) { e.stopPropagation(); showImage(currentIdx - 1); });
-  document.getElementById('lb-next').addEventListener('click', function(e) { e.stopPropagation(); showImage(currentIdx + 1); });
-  document.addEventListener('keydown', function(e) {
-    if (!overlay.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') showImage(currentIdx - 1);
-    if (e.key === 'ArrowRight') showImage(currentIdx + 1);
-  });
-})();
-</script>
-</body>
-</html>
