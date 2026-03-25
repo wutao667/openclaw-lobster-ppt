@@ -1182,3 +1182,68 @@
 </section>
 
 
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  showSlideNumber: 'all',
+  transition: 'slide',
+  transitionSpeed: 'default',
+  backgroundTransition: 'fade',
+  width: 1280,
+  height: 720,
+  margin: 0.06,
+  center: true,
+  plugins: [RevealHighlight, RevealNotes]
+});
+
+// Lightbox
+(function() {
+  const overlay = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  let allImages = [], currentIdx = 0;
+
+  function collectImages() {
+    allImages = Array.from(document.querySelectorAll('section img[src^="ppt-assets/"]'));
+  }
+
+  function showImage(idx) {
+    if (idx < 0 || idx >= allImages.length) return;
+    currentIdx = idx;
+    lbImg.src = allImages[idx].src;
+    lbCounter.textContent = `${idx + 1} / ${allImages.length}`;
+    overlay.classList.add('active');
+  }
+
+  function closeLightbox() {
+    overlay.classList.remove('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    collectImages();
+    document.querySelectorAll('section img[src^="ppt-assets/"]').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => showImage(allImages.indexOf(img)));
+    });
+    overlay.querySelector('.close').addEventListener('click', closeLightbox);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImage(currentIdx - 1);
+    if (e.key === 'ArrowRight') showImage(currentIdx + 1);
+  });
+})();
+</script>
+</body>
+</html>
